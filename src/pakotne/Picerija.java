@@ -1,19 +1,15 @@
 package pakotne;
 
-import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
 public class Picerija {
-private static CilvekaDati cilvekaDati=null;
+
 	public static void main(String[] args) {
+	ArrayList<CilvekaDati> cilvekaDatiList=new ArrayList<>();
 		String izvele;
 		int izvelesIndekss = 0;
 		String []darbibas={"Pasūtīt picu","Apskatīt pasūtījumus","Sūtītāja info","Čeks","Apturēt"};
@@ -32,40 +28,29 @@ private static CilvekaDati cilvekaDati=null;
 					JOptionPane.showMessageDialog(null, "Telefona numur ir jārakstā ar burtiem","Kļūda ", JOptionPane.ERROR_MESSAGE);
 					telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
 				}
-				cilvekaDati= new CilvekaDati(vards,uzvards,telefonaNr);
+				cilvekaDatiList.add (new CilvekaDati(vards,uzvards,telefonaNr));
+				String[]picasVeidi= {"Lauku","Salami","Vegetāra"};
+				int picasIzvele=JOptionPane.showOptionDialog(null, "Picas izvele", "izvēle", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, picasVeidi, picasVeidi[0]);
+				double cenas[]={5.99,6.99,7.99};
+				String[] merces= {"Kečups","Majonēze","Tabasko"};
+				int izveletaMerce=JOptionPane.showOptionDialog(null, "Mērču izvēle", "izvēle", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, merces, merces[0]);
+				double mercuCena[]= {0.35,0.40,0.75};
 				
+				double summa=0;
+				summa=cenas[picasIzvele];
+				summa=mercuCena[izveletaMerce];
 				
-				JFrame picaLogs=new JFrame("Izvēlies");
-				picaLogs.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				picaLogs.setSize(700,700);
-				
-				JPanel picas=new JPanel();
-				picas.setLayout(new GridLayout(3,1));
-				
-				JRadioButton salami=new JRadioButton(new ImageIcon("pakotne.salami.png"));
-				JRadioButton lauku=new JRadioButton(new ImageIcon("lauku.png"));
-				JRadioButton vegetara=new JRadioButton(new ImageIcon("vegetara.png"));
-				
-				ButtonGroup grupa=new ButtonGroup();
-				grupa.add(salami);
-				grupa.add(lauku);
-				grupa.add(vegetara);
-				
-				
-				picas.add(salami);
-				picas.add(lauku);
-				picas.add(vegetara);
-				
-				
-				picaLogs.add(picas);
-				
-				int picasIzvele=JOptionPane.showOptionDialog(picaLogs, picas, "Izvēlies picu", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE,null,new Object[] {salami,lauku,vegetara},salami);
-				picaLogs.setVisible(true);
+				int piegade=JOptionPane.showOptionDialog(null,"Vajadzīga piegāde?", "Piegāde",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,JOptionPane.NO_OPTION);
+				if(piegade==JOptionPane.YES_OPTION) {
+					summa+=2.50;
+				}
 			case 1:
 				break;
 			case 2:
-				if(cilvekaDati!=null) {
-			     cilvekaDati.infoIzvade();
+				if(!cilvekaDatiList.isEmpty()) {
+			     for(CilvekaDati cilvekaDati : cilvekaDatiList) {
+			    	 cilvekaDati.infoIzvade();
+			     }
 				}else {
 					JOptionPane.showMessageDialog(null, "Vēl nav informācijas ","Paziņojums",JOptionPane.PLAIN_MESSAGE);
 				}
