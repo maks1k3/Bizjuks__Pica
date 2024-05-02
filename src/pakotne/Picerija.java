@@ -37,6 +37,12 @@ private static CilvekaDati cilvekaDati=null;
 					JOptionPane.showMessageDialog(null, "Vēl nav informācijas ","Paziņojums",JOptionPane.PLAIN_MESSAGE);
 				}
 				break;
+			
+			case 3:
+				break;
+			case 4:
+				System.exit(0);
+				break;
 			}
 		}while(izvelesIndekss!=5);
 
