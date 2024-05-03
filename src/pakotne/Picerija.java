@@ -43,7 +43,7 @@ public class Picerija {
 					JOptionPane.showMessageDialog(null, "Telefona numur ir jārakstā ar burtiem","Kļūda ", JOptionPane.ERROR_MESSAGE);
 					telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
 				}
-				cilvekaDatiList.add (new CilvekaDati(vards,uzvards,telefonaNr));
+			
 				String[]picasVeidi= {"Lauku","Salami","Vegetāra"};
 				int picasIzvele=JOptionPane.showOptionDialog(null, "Picas izvele", "izvēle", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, picasVeidi, picasVeidi[0]);
 				double cenas[]={5.99,6.99,7.99};
@@ -53,15 +53,19 @@ public class Picerija {
 				int izveletaMerce=JOptionPane.showOptionDialog(null, "Mērču izvēle", "izvēle", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, merces, merces[0]);
 				double mercuCena[]= {0.35,0.40,0.75};
 				
-				double summa=0;
-				summa=cenas[picasIzvele];
-				summa=mercuCena[izveletaMerce];
+				double summa=cenas[picasIzvele]*mercuCena[izveletaMerce];
 				
 				int piegade=JOptionPane.showOptionDialog(null,"Vajadzīga piegāde?", "Piegāde",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,JOptionPane.NO_OPTION);
+				String piegadeInfo=(piegade==JOptionPane.YES_NO_OPTION)? "Ir":"Nav";
 				if(piegade==JOptionPane.YES_OPTION) {
 					summa+=2.50;
+					
+					String picasVeidiIzv=picasVeidi[picasIzvele];
+					String mercesIzv=merces[izveletaMerce];
+					cilvekaDatiList.add (new CilvekaDati(vards,uzvards,telefonaNr,picasVeidiIzv, mercesIzv,piegadeInfo));
 				}
 			case 1:
+				
 				break;
 			case 2:
 				if(!cilvekaDatiList.isEmpty()) {
@@ -74,6 +78,11 @@ public class Picerija {
 				break;
 			
 			case 3:
+//				double picasCena=cenas[picasIzvele];
+//				double mercesCena=mercuCena[izveletaMerce];
+				Ceks ceks=new Ceks(6.90,0.30);
+				ceks.setPiegade(2.50, true);
+				ceks.infoIzvade();
 				break;
 			case 4:
 				System.exit(0);
