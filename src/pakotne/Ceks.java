@@ -12,38 +12,38 @@ private boolean irPiegade;
 public Ceks(double picasCena, double mercesCena) {
 	this.picasCena=picasCena;
 	this.mercesCena=mercesCena;
-	this.irPiegade=false;
 	this.Sum();
 }
 private void Sum() {
-	this.summa=this.picasCena+this.mercesCena;
-	if(this.irPiegade) {
-		this.summa+=this.piegade;
+	if(irPiegade) {
+		summa += piegade;
 	}
+	summa= picasCena+mercesCena;
 }
 	public  void infoIzvade() {
-		String cekaInfo="Picas cena : "+this.picasCena+"/nMērces cena: "+this.mercesCena;
-		if(this.irPiegade) {
-			cekaInfo="Piegādes cena : "+this.piegade;
-			cekaInfo="Čeka summa: "+ this.summa;
+		String cekaInfo="Picas cena : "+picasCena+"/nMērces cena: "+mercesCena;
+		if(irPiegade) {
+			cekaInfo="Piegādes cena : "+piegade;
+			cekaInfo="Čeka summa: "+ summa;
 			JOptionPane.showMessageDialog(null, cekaInfo,"Čeka informācija",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	public void setPicasCena(double picasCena) {
-		this.picasCena=this.picasCena;
-		this.Sum();
+		this.picasCena=picasCena;
+		Sum();
 	}
 	public void setMercesCena(double mercesCena) {
-		this.mercesCena=this.mercesCena;
-		this.Sum();
+		this.mercesCena=mercesCena;
+		Sum();
 	}
+	
 	public void setPiegade(double piegade,boolean irPiegade) {
-		this.irPiegade=this.irPiegade;
-		this.piegade=this.piegade;
-		this.Sum();
+		this.irPiegade= irPiegade;
+		this.piegade= piegade;
+		Sum();
 	}
 	public double getSumma() {
-		return this.summa;
+		return summa;
 	}
 }
 
