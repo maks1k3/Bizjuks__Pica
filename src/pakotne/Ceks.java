@@ -40,10 +40,30 @@ private void Sum() {
 	public void setPiegade(double piegade,boolean irPiegade) {
 		this.irPiegade= irPiegade;
 		this.piegade= piegade;
-		Sum();
+	
+	}
+	public void setSumma(double summa) {
+		this.summa=summa;
 	}
 	public double getSumma() {
 		return summa;
+	}
+	public double getPicasCena() {
+		return picasCena;
+	}
+	public double getMercesCena() {
+		return mercesCena;
+			
+	}
+	public double getPiegade() {
+		return piegade;
+	}
+	public boolean isIrPiegade() {
+		return irPiegade;
+	}
+	public boolean isEmpty() {
+	
+		return false;
 	}
 }
 

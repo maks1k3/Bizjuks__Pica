@@ -53,25 +53,28 @@ public class Picerija {
 				String[] merces= {"Kečups","Majonēze","Tabasko"};
 				
 				int izveletaMerce=JOptionPane.showOptionDialog(null, "Mērču izvēle", "izvēle", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, merces, merces[0]);
-				double mercuCena[]= {0.35,0.40,0.75};
-				double merceCena=mercuCena[izveletaMerce];
+				double mercuCenas[]= {0.35,0.40,0.75};
+				double merceCena=mercuCenas[izveletaMerce];
 				
-				double summa = picaCenas[picasIzvele] + mercuCena[izveletaMerce];
+				double summa = picaCenas[picasIzvele] + mercuCenas[izveletaMerce];
 				
+				System.out.println(picaCenas[picasIzvele] +" and "+ mercuCenas[izveletaMerce]);
 				int piegade=JOptionPane.showOptionDialog(null,"Vajadzīga piegāde?", "Piegāde",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,JOptionPane.NO_OPTION);
 				
 				String piegadeInfo=(piegade==JOptionPane.YES_NO_OPTION)? "Ir":"Nav";
 				ceks=new Ceks(picaCena,merceCena);
-				
-				ceks.setMercesCena(picaCena);
+				double piegadesSumma=2.50;
+				ceks.setMercesCena(merceCena);
 				if(piegade==JOptionPane.YES_OPTION) {
-					summa+=2.50;
+					
+					summa+=piegadesSumma;
 //					Ceks ceks=new Ceks(6.90,0.30);
-					ceks.setPiegade(summa, true);
+					ceks.setPiegade(piegadesSumma, true);
 					
 				}else {
-					ceks.setPiegade(summa, false);
+					ceks.setPiegade(piegadesSumma, false);
 				}
+				ceks.setSumma(summa);
 				 String picasVeidiIzv=picasVeidi[picasIzvele];
 				String  mercesIzv=merces[izveletaMerce];
 				cilvekaDatiList.add (new CilvekaDati(vards,uzvards,telefonaNr,picasVeidiIzv, mercesIzv, piegadeInfo));
@@ -90,9 +93,16 @@ public class Picerija {
 				break;
 			
 			case 3:
-
-
-				ceks.infoIzvade();
+//			String pane=JOptionPane.showMessageDialog(null, "Vēl nav informācijas ","Paziņojums",JOptionPane.PLAIN_MESSAGE);
+//				if (!pane.isEmpty()) {
+//					display(ceks);
+//				}
+				if(!cilvekaDatiList.isEmpty()) {
+				     display(ceks);
+					}else {
+						JOptionPane.showMessageDialog(null, "Vēl nav informācijas ","Paziņojums",JOptionPane.PLAIN_MESSAGE);
+					}
+					
 				break;
 			case 4:
 				System.exit(0);
@@ -100,6 +110,14 @@ public class Picerija {
 			}
 		}while(izvelesIndekss!=5);
 
+		
 	}
-
+public static void display(Ceks ceks) {
+	String cekaInfo= "Picas cena : "+ ceks.getPicasCena()+"€"+ "\nMērces cena: "+ceks.getMercesCena()+"€";
+	if(ceks.isIrPiegade()) {
+		cekaInfo+="\nPiegādes cena: "+ceks.getPiegade()+"€";
+		cekaInfo+="\nSumma: "+ceks.getSumma()+"€";
+	}
+	JOptionPane.showMessageDialog(null, cekaInfo,"Čeks",JOptionPane.INFORMATION_MESSAGE);
+}
 }
