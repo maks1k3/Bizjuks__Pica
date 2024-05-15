@@ -40,8 +40,8 @@ public class Picerija {
 				String telefonaNr;
 				do {
 				telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
-				}while(telefonaNr.length() < 8 && telefonaNr.length()<9);
-				if (!Pattern.matches("\\d+", telefonaNr)) {
+				}while(telefonaNr.length() != 8 ||!Character.isDigit( telefonaNr.charAt(0)));
+				if (!Character.isDigit(telefonaNr.charAt(0))) {
 					JOptionPane.showMessageDialog(null, "Telefona numur ir jāraksta ar burtiem","Kļūda ", JOptionPane.ERROR_MESSAGE);
 					telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
 				}
