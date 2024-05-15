@@ -12,7 +12,7 @@ public class Picerija {
 	ArrayList<CilvekaDati> cilvekaDatiList=new ArrayList<>();
 		String izvele;
 		int izvelesIndekss = 0;
-		String []darbibas={"Pasūtīt picu","Apskatīt pasūtījumus","Sūtītāja info","Čeks","Apturēt"};
+		String []darbibas={"Pasūtīt picu","Noņemt pasutījumu","Sūtītāja info","Čeks","Apturēt"};
 		Ceks ceks = null;
 		
 		do {
@@ -26,23 +26,33 @@ public class Picerija {
 				do {
 				 
 				 vards=JOptionPane.showInputDialog("Ievadi savu vārdu ");
+				 if(!pareizs(vards)) {
+					 JOptionPane.showMessageDialog(null, "Ievadi korrektu vārdu","Paziņojums",JOptionPane.ERROR_MESSAGE);
+					 continue;
+				 }
 //				 if (vards==null|| vards.isEmpty()||!Pattern.matches("[a-zA-Z]", vards)) {
 //					 JOptionPane.showMessageDialog(null, "Ievadi korrektu vārdu","Paziņojums",JOptionPane.ERROR_MESSAGE);
 //				 }
 //				 if(vards==null||vards.isEmpty()) {
 //					 JOptionPane.showMessageDialog(null, "Ievadi vārdu","Paziņojums",JOptionPane.WARNING_MESSAGE);
 //					 vards=JOptionPane.showInputDialog("Ievadi savu vārdu ");
-				}while(vards.length()<3);
+				 break;
+				}while(true);
 				String uzvards;
 				do {
 				 uzvards=JOptionPane.showInputDialog("Ievadi uzvārdu");
-				}while(uzvards.length()<3);
+				 if(!pareizsU(uzvards)) {
+					 JOptionPane.showMessageDialog(null, "Ievadi korrektu vārdu","Paziņojums",JOptionPane.ERROR_MESSAGE);
+					 continue;
+				 }
+				 break;
+				}while(true);
 				String telefonaNr;
 				do {
 				telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
-				}while(telefonaNr.length() < 8 && telefonaNr.length()<9);
-				if (!Pattern.matches("\\d+", telefonaNr)) {
-					JOptionPane.showMessageDialog(null, "Telefona numur ir jārakstā ar burtiem","Kļūda ", JOptionPane.ERROR_MESSAGE);
+				}while(telefonaNr.length() != 8 ||!Character.isDigit( telefonaNr.charAt(0)));
+				if (!Character.isDigit(telefonaNr.charAt(0))) {
+					JOptionPane.showMessageDialog(null, "Telefona numur ir jāraksta ar burtiem","Kļūda ", JOptionPane.ERROR_MESSAGE);
 					telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
 				}
 			
@@ -80,8 +90,18 @@ public class Picerija {
 				cilvekaDatiList.add (new CilvekaDati(vards,uzvards,telefonaNr,picasVeidiIzv, mercesIzv, piegadeInfo));
 				break;
 			case 1:
-				
-				break;
+				if(!cilvekaDatiList.isEmpty()) {
+					int indexRemove=Metodes.picasIzvele(cilvekaDatiList);
+					if(indexRemove!= -1) {
+						cilvekaDatiList.remove(indexRemove);
+						JOptionPane.showMessageDialog(null, "Pica ir noņemta","Paziņojums",JOptionPane.INFORMATION_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "nav picas","Bridinajums",JOptionPane.WARNING_MESSAGE);
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Nav picas!","Brīdinājums",JOptionPane.WARNING_MESSAGE);
+				}
+					break;
 			case 2:
 				if(!cilvekaDatiList.isEmpty()) {
 			     for(CilvekaDati cilvekaDati : cilvekaDatiList) {
@@ -119,5 +139,12 @@ public static void display(Ceks ceks) {
 		cekaInfo+="\nSumma: "+ceks.getSumma()+"€";
 	}
 	JOptionPane.showMessageDialog(null, cekaInfo,"Čeks",JOptionPane.INFORMATION_MESSAGE);
+}
+private static boolean pareizs(String vards) {
+	return Pattern.matches("[a-zA-Z]+", vards);
+}
+private static boolean pareizsU(String uzvards) {
+	return Pattern.matches("[a-zA-Z]+", uzvards);
+
 }
 }

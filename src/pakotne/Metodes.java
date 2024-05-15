@@ -11,7 +11,7 @@ public static int picasIzvele(ArrayList<CilvekaDati>cilvekaDatiList) {
 	for (int i=0;i<cilvekaDatiList.size();i++) {
 	CilvekaDati cilvekaDati=cilvekaDatiList.get(i);
 	
-	String izvele= "Pica: "+cilvekaDati.getPicasVeidi()+ "Mērce"+cilvekaDati.getMerces();
+	String izvele= "Pica: "+cilvekaDati.getPicasVeidi()+ " Mērce"+cilvekaDati.getMerces();
 	saraksts.add(izvele);
 	}
 	String izveletais=(String)JOptionPane.showInputDialog(null,"Izvēle","Izvēle",JOptionPane.QUESTION_MESSAGE,null,saraksts.toArray(new String[0]),saraksts.get(0));
