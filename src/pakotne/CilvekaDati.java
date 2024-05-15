@@ -19,7 +19,18 @@ public CilvekaDati(String vards,String uzvards, String telefonaNr,String picasVe
 	this.merces=merces;
 	this.piegade=piegade;
 }
+public String getPicasVeidi() {
+	return picasVeidi;
+}
+public String getMerces() {
+	return merces;
+}
 public void  infoIzvade(){
 	JOptionPane.showMessageDialog(null, "Vārds: "+vards+ "\nUzvārds: "+uzvards+"\nTelefona Numurs : "+telefonaNr+"\nPica :"+picasVeidi+"\nMērce :"+merces+"\nPiegāde : "+piegade,"Cilvēka dati",JOptionPane.INFORMATION_MESSAGE);
 }
+
+
+
+
+
 }

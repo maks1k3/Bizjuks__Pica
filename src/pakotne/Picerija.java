@@ -42,7 +42,7 @@ public class Picerija {
 				telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
 				}while(telefonaNr.length() < 8 && telefonaNr.length()<9);
 				if (!Pattern.matches("\\d+", telefonaNr)) {
-					JOptionPane.showMessageDialog(null, "Telefona numur ir jārakstā ar burtiem","Kļūda ", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Telefona numur ir jāraksta ar burtiem","Kļūda ", JOptionPane.ERROR_MESSAGE);
 					telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
 				}
 			
@@ -80,8 +80,18 @@ public class Picerija {
 				cilvekaDatiList.add (new CilvekaDati(vards,uzvards,telefonaNr,picasVeidiIzv, mercesIzv, piegadeInfo));
 				break;
 			case 1:
-				
-				break;
+				if(!cilvekaDatiList.isEmpty()) {
+					int indexRemove=Metodes.picasIzvele(cilvekaDatiList);
+					if(indexRemove!= -1) {
+						cilvekaDatiList.remove(indexRemove);
+						JOptionPane.showMessageDialog(null, "Pica ir noņemta","Paziņojums",JOptionPane.INFORMATION_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "nav picas","Bridinajums",JOptionPane.WARNING_MESSAGE);
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Nav picas!","Brīdinājums",JOptionPane.WARNING_MESSAGE);
+				}
+					break;
 			case 2:
 				if(!cilvekaDatiList.isEmpty()) {
 			     for(CilvekaDati cilvekaDati : cilvekaDatiList) {
