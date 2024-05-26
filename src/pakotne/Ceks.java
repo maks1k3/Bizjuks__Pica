@@ -17,11 +17,11 @@ public Ceks(double picasCena, double mercesCena) {
 private void Sum() {
 	if(irPiegade) {
 		summa += piegade;
-	}
+	}else
 	summa= picasCena+mercesCena;
 }
 	public  void infoIzvade() {
-		String cekaInfo="Picas cena : "+picasCena+"/nMērces cena: "+mercesCena;
+		String cekaInfo="Picas cena : "+picasCena+"/nMērces cena: "+mercesCena+"Summa"+summa;
 		if(irPiegade) {
 			cekaInfo="Piegādes cena : "+piegade;
 			cekaInfo="Čeka summa: "+ summa;

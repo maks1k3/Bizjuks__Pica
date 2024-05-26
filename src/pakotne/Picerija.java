@@ -1,9 +1,13 @@
 package pakotne;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Picerija {
@@ -56,20 +60,20 @@ public class Picerija {
 					telefonaNr=JOptionPane.showInputDialog("Ievadi telefona numuru");
 				}
 			
-				String[]picasVeidi= {"Lauku","Salami","Vegetāra"};
+				String[]picasVeidi= {"Lauku (5.99€)","Salami (6.99€)","Vegetāra (7.99€)"};
 				int picasIzvele=JOptionPane.showOptionDialog(null, "Picas izvele", "izvēle", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, picasVeidi, picasVeidi[0]);
 				double picaCenas[]={5.99,6.99,7.99};
 				double picaCena=picaCenas[picasIzvele];
-				String[] merces= {"Kečups","Majonēze","Tabasko"};
+				String[] merces= {"Kečups (0.35€)","Majonēze (0.40€)","Tabasko (0.75€)"};
 				
 				int izveletaMerce=JOptionPane.showOptionDialog(null, "Mērču izvēle", "izvēle", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, merces, merces[0]);
-				double mercuCenas[]= {0.35,0.40,0.75};
+				double mercuCenas[]= {0.35,0.45,0.75};
 				double merceCena=mercuCenas[izveletaMerce];
 				
 				double summa = picaCenas[picasIzvele] + mercuCenas[izveletaMerce];
 				
 				System.out.println(picaCenas[picasIzvele] +" and "+ mercuCenas[izveletaMerce]);
-				int piegade=JOptionPane.showOptionDialog(null,"Vajadzīga piegāde?", "Piegāde",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,JOptionPane.NO_OPTION);
+				int piegade=JOptionPane.showOptionDialog(null,"Vajadzīga piegāde?", "Piegāde maksā (2.50€)",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,JOptionPane.NO_OPTION);
 				
 				String piegadeInfo=(piegade==JOptionPane.YES_NO_OPTION)? "Ir":"Nav";
 				ceks=new Ceks(picaCena,merceCena);
@@ -88,6 +92,7 @@ public class Picerija {
 				 String picasVeidiIzv=picasVeidi[picasIzvele];
 				String  mercesIzv=merces[izveletaMerce];
 				cilvekaDatiList.add (new CilvekaDati(vards,uzvards,telefonaNr,picasVeidiIzv, mercesIzv, piegadeInfo));
+				pasutijumi(vards,uzvards,telefonaNr,picasVeidiIzv,mercesIzv,piegadeInfo);
 				break;
 			case 1:
 				if(!cilvekaDatiList.isEmpty()) {
@@ -146,5 +151,17 @@ private static boolean pareizs(String vards) {
 private static boolean pareizsU(String uzvards) {
 	return Pattern.matches("[a-zA-Z]+", uzvards);
 
+}
+private static void pasutijumi(String vards, String uzvards, String telefonaNr, String picasVeidsIzv, String mercesIzv, String piegadeInfo) {
+	try(BufferedWriter writer=new BufferedWriter(new FileWriter("pasutijumi.txt",true))){
+		writer.write("vārds: "+ vards+ "\n");
+		writer.write("Uzvārds: "+ uzvards+ "\n");
+		writer.write("Pica: "+ picasVeidsIzv+ "\n");
+		writer.write("Merce: "+ mercesIzv+ "\n");
+		writer.write("Piegade: "+ piegadeInfo+ "\n-----------------\n");
+		System.out.println("Iet");
+	}catch(IOException e){
+		System.out.println("Kļūda rakstot failā"+ e.getMessage());
+	}
 }
 }
