@@ -73,7 +73,7 @@ public class Picerija {
 				double summa = picaCenas[picasIzvele] + mercuCenas[izveletaMerce];
 				
 				System.out.println(picaCenas[picasIzvele] +" and "+ mercuCenas[izveletaMerce]);
-				int piegade=JOptionPane.showOptionDialog(null,"Vajadzīga piegāde?", "Piegāde maksā (2.50€)",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,JOptionPane.NO_OPTION);
+				int piegade=JOptionPane.showOptionDialog(null,"Vajadzīga piegāde? Piegāde maksā (2.50€)", "Piegāde ",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,JOptionPane.NO_OPTION);
 				
 				String piegadeInfo=(piegade==JOptionPane.YES_NO_OPTION)? "Ir":"Nav";
 				ceks=new Ceks(picaCena,merceCena);

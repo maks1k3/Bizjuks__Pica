@@ -1,60 +1,36 @@
-vārds: maks
-Uzvārds: bi
-Pica: Vegetāra (7.99€)
-Merce: Tabasko (0.75€)
-Piegade: Nav
-
-vārds: www
-Uzvārds: eee
-Pica: Salami (6.99€)
-Merce: Majonēze (0.40€)
-Piegade: Ir
-
-vārds: wewer
-Uzvārds: dsa
-Pica: Lauku (5.99€)
-Merce: Tabasko (0.75€)
-Piegade: Ir
-
-vārds: dfs
-Uzvārds: sdgs
-Pica: Salami (6.99€)
-Merce: Majonēze (0.40€)
-Piegade: Nav
-
-vārds: dfdg
-Uzvārds: fsdfds
-Pica: Salami (6.99€)
-Merce: Majonēze (0.40€)
-Piegade: Nav
-
-vārds: sfsg
-Uzvārds: ff
-Pica: Salami (6.99€)
-Merce: Majonēze (0.40€)
-Piegade: Nav
-
-vārds: fgdf
-Uzvārds: sdsd
-Pica: Salami (6.99€)
-Merce: Majonēze (0.40€)
-Piegade: Nav
-
-vārds: gfdf
-Uzvārds: sdfds
-Pica: Salami (6.99€)
-Merce: Majonēze (0.40€)
-Piegade: Nav
-
-vārds: wfs
-Uzvārds: gdfg
-Pica: Salami (6.99€)
-Merce: Kečups (0.35€)
-Piegade: Ir
-
 vārds: dgdgfd
 Uzvārds: sgds
 Pica: Salami (6.99€)
 Merce: Kečups (0.35€)
+Piegade: Ir
+-----------------
+vārds: dgsdf
+Uzvārds: fgdg
+Pica: Vegetāra (7.99€)
+Merce: Majonēze (0.40€)
+Piegade: Nav
+-----------------
+vārds: ssss
+Uzvārds: ssdd
+Pica: Salami (6.99€)
+Merce: Majonēze (0.40€)
+Piegade: Ir
+-----------------
+vārds: dfgfg
+Uzvārds: dddd
+Pica: Lauku (5.99€)
+Merce: Tabasko (0.75€)
+Piegade: Ir
+-----------------
+vārds: dsds
+Uzvārds: srfs
+Pica: Salami (6.99€)
+Merce: Majonēze (0.40€)
+Piegade: Nav
+-----------------
+vārds: fgdgf
+Uzvārds: sdgsdg
+Pica: Salami (6.99€)
+Merce: Majonēze (0.40€)
 Piegade: Ir
 -----------------
